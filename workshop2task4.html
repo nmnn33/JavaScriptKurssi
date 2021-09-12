@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        var txt;
-var r = confirm("Press a button!");
-if (r == true) {
-  txt = "You pressed OK!";
-} else {
-  txt = "You pressed Cancel!";
-} 
+      //Tehtävä 4 student juttu
+      /*var r = confirm("Press a button!");
+      if (r == true) {
+        document.write("Welcome student");
+      } else {
+        document.write("Sorry, this page is for students only");
+      } */
+      var images =[
+      "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+      "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+      "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
+      ];
+      //alempi document.write kuva ei näy koska document.images korvaa kaikki html elementit.
+      document.write("<img src='https://cdn.pixabay.com/photo/2020/07/21/16/24/landscape-5426755_960_720.jpg/'>")
+      var number = Math.round ( Math.random() * 2 ) 
+      document.images[0].src = images[number];
     </script>
 </head>
 <body>
