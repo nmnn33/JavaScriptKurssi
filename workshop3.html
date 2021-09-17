@@ -17,11 +17,77 @@ table, tr, td{
 
 </style>
 <script>
+function myFunction1() {
+  var pvm = new Date();
+  var date = pvm.getDate();
+  var month = pvm.getMonth();
+  var hours = pvm.getHours();
+  var currdate = date+"/"+month+"/"+hours;
+  alert("Kiitos että clickasit minua! tässä päivä, kuukausi ja tunnit: "+currdate);
 
-<!-- JavaScript goes here -->
+}
+function showTable() {
+  var html = `<table id="example" class="display" cellspacing="0" width="100%" border="5px solid gray">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>$162,700</td>
+            </tr>
 
-
-
+        </tbody>
+    </table>
+    `;
+  document.write(html);
+}
+function showTable1() {
+  var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+	       "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+	       "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+	       "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria" ];
+  document.write('<table border=1><tr>');
+  document.write('<th>Name</th><th>Address</th><th>Country</th>');
+  document.write('<tr>');
+  for(var i=0; i<persons.length; i++) {
+    if (i % 3 == 0) {
+      document.write('<tr></tr>');
+    }
+    document.write("<td>"+persons[i]+"</td>");
+  }
+  document.write('</table>');
+}
+function myFocus() {
+  
+}
 </script>
 
 <h1>Workshop 3: JavaScript Events</h1>
@@ -33,11 +99,10 @@ good idea to save the lines of code you write during the exercises for later use
 <h2>Exercise 1</h2>
 <p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons.</p>
 <p>
-  <button>Button 1</button>
-  <button>Button 2</button>
-  <button>Button 3</button>
+  <button onclick="myFunction1()">Button 1</button>
+  <button onclick="showTable()">Button 2</button>
+  <button onclick="showTable1()">Button 3</button>
 </p>
-
 <ul>
   <li>Button 1 should open an alert-button, which will say "You clicked me!" </li>
   <li> When you see the button working, add the current date after the text by using the Date() -function. HINT. You can get spesific parts of the date by first creating a date 
@@ -111,7 +176,7 @@ var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde",
 </xmp>
 </ul>
 
-<h2>Exercise 2</h2>
+<h2 onmouseover="console.log('Stepped over my a mouse!');" onmouseleave="console.log('Bye bye mouse!');">Exercise 2</h2>
 
 <ul>
   <li>Add an&nbsp;onMouseOver event on the&nbsp;Heading "Exercise 2" of this page.&nbsp;It should&nbsp;fire when the users mouse is moved
@@ -130,7 +195,7 @@ modifying the background color of the box as well. &nbsp;
 command:   <i>document.getElementById("textdata").value</i>. We will study the forms deeper in Workshops 4 and 5.</li>
 </ul>
 <form>
-  <textarea id="textdata"></textarea><br>
+  <textarea id="textdata" onfocus="myFocus()"></textarea><br>
     <button>Send me</button>
 </form>
 <h2>Exercise 4</h2>
