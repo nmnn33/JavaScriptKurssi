@@ -19,14 +19,62 @@ table, tr, td{
 <script>
 //counter variable so keypresses don't reset!
 var counter = 0;
-function myFunction1() {
-  var pvm = new Date();
-  var date = pvm.getDate();
-  var month = pvm.getMonth();
-  var hours = pvm.getHours();
-  var currdate = date+"/"+month+"/"+hours;
-  alert("Kiitos että clickasit minua! tässä päivä, kuukausi ja tunnit: "+currdate);
+function showTable1() {
+  var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+	       "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+	       "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+	       "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria" ];
+  document.write('<table border=1><tr>');
+  document.write('<th>Name</th><th>Address</th><th>Country</th>');
+  document.write('<tr>');
+  for(var i=0; i<persons.length; i++) {
+    if (i % 3 == 0) {
+      document.write('<tr></tr>');
+    }
+    document.write("<td>"+persons[i]+"</td>");
+  }
+  document.write('</table>');
 }
+function myFocus() {
+  document.getElementById("textdata").value="Please fill in the form with proper data.";
+  document.getElementById("textdata").style.background="green";
+}
+function myKeyDown() {
+  counter= counter +1;
+  document.getElementById("counterUnit").innerHTML="Count of keypresses: "+counter;
+}
+function mySubmit() {
+  var tyhjä = document.getElementById("textdata");
+  if (tyhjä.value == '') {
+    alert("Tyhjä tekstikenttä!");
+  }
+}
+</script>
+
+<h1>Workshop 3: JavaScript Events</h1>
+<hr />
+<p>In this exercise we will practice the use of BOM and the JavaScript events. Use the lecture-material as a reference guide side by side these exercises. It might also be a 
+good idea to save the lines of code you write during the exercises for later use.</p>
+
+
+<h2>Exercise 1</h2>
+<p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons.</p>
+<p>
+  <button id="Btn1">Button 1</button>
+<script>
+    document.getElementById("Btn1").addEventListener("click", myFunction1);
+    function myFunction1() {
+    var pvm = new Date();
+    var date = pvm.getDate();
+    var month = pvm.getMonth();
+    var hours = pvm.getHours();
+    var currdate = date+"/"+month+"/"+hours;
+    alert("Kiitos että clickasit minua! tässä päivä, kuukausi ja tunnit: "+currdate);
+  }
+</script>
+  <button id="Btn2">Button 2</button>
+<script>
+    document.getElementById("Btn2").addEventListener("click", showTable);
 function showTable() {
   var html = `<table id="example" class="display" cellspacing="0" width="100%" border="5px solid gray">
         <thead>
@@ -70,68 +118,7 @@ function showTable() {
     `;
   document.write(html);
 }
-function showTable1() {
-  var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
-	       "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
-	       "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
-	       "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria" ];
-  document.write('<table border=1><tr>');
-  document.write('<th>Name</th><th>Address</th><th>Country</th>');
-  document.write('<tr>');
-  for(var i=0; i<persons.length; i++) {
-    if (i % 3 == 0) {
-      document.write('<tr></tr>');
-    }
-    document.write("<td>"+persons[i]+"</td>");
-  }
-  document.write('</table>');
-}
-function myFocus() {
-  document.getElementById("textdata").value="Please fill in the form with proper data.";
-  document.getElementById("textdata").style.background="green";
-}
-function myKeyDown() {
-  counter= counter +1;
-  document.getElementById("counterUnit").innerHTML="Count of keypresses: "+counter;
-}
-function mySubmit() {
-  var tyhjä = document.getElementById("textdata");
-  if (tyhjä.value == '') {
-    alert("Tyhjä tekstikenttä!");
-  }
-}
-function myMMove() {
-  var x = event.clientX;
-  var y = event.clientY;
-  var coords = "X coords: " + x + ", Y coords: " + y;
-  console.log(coords);
-  document.getElementById("coordss").innerHTML = coords;
-}
-function geologShow() {
-  var x = document.getElementById("location");
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser."
-  }
-}
-function showPosition(position) {
-  document.getElementById("location").innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
 </script>
-
-<h1>Workshop 3: JavaScript Events</h1>
-<hr />
-<p>In this exercise we will practice the use of BOM and the JavaScript events. Use the lecture-material as a reference guide side by side these exercises. It might also be a 
-good idea to save the lines of code you write during the exercises for later use.</p>
-
-
-<h2>Exercise 1</h2>
-<p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons.</p>
-<p>
-  <button onclick="myFunction1()">Button 1</button>
-  <button onclick="showTable()">Button 2</button>
   <button onclick="showTable1()">Button 3</button>
 </p>
 <ul>
@@ -236,8 +223,7 @@ achieved using addEventListener() -function, <a target="_blank" href="https://ww
 
 <h2>Exercise 5</h2>
 
-<div id="coordinates" onmousemove="myMMove()"><h2 id="coordss"></h2></div>
-
+<div id="coordinates"></div>
 
 <p>Add onMouseMove -event to the DIV-element above. When you move mouse over the DIV (rectangle) the program should output the coordinates of your pointer. Try first 
 outputting to the console using console.log. <p>HINT. When the event occurs, call for a method showXY(event); Then in the actual method you can output data from the 
@@ -246,10 +232,9 @@ mouse event using event.clientX and event.clientY variables. Study the event obj
 document.getElementById("coordinates").innerHTML to achieve this.
 
 <H2>Exercise 6</h2>
-<button id="geolog" onclick="geologShow()">Get location</button> 
-<button id="gMap">Show location</button> 
-<p id="location">Tänne location.</p>
-<h2 id="mapholder">Kartta</h2>
+<button>Get location</button> 
+<button>Show location</button> 
+
 <li>The first button should check <a href="https://www.w3schools.com/html/html5_geolocation.asp">Geolocation</a> of the user, and output it to the console and to the 
 page. Note: Some browsers might not allow you to do this. Try different browsers if you get errors.</li>
 <li>
@@ -257,16 +242,4 @@ The second button should show your location on a Google Maps. You can see the ma
 "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false" where latlon is your latitude + longitute data separated by 
 comma (,).
 </li>
-
-<script>
-  function gMap(position) {
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
-  
-    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=
-    "+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
-  
-    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-  }
-</script>
-
 </html>
