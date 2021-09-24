@@ -22,13 +22,37 @@ img {
 
 </style>
 <script>
-
-<!-- JavaScript goes here -->
-
-
+function myClick1() {
+  var x = document.getElementById("head");
+  x.innerHTML = "Modified Heading!";
+}
+function myClick2() {
+  var x = document.getElementById("head2");
+  x.style.fontFamily = "Tahoma, sans-serif"; 
+}
+function myClick3() {
+  const x = document.querySelectorAll("p");
+  const y = x[3];
+  const c = document.getElementById("str");
+  const v = document.getElementById("emm");
+  y.innerHTML += c.innerHTML+v.innerHTML;
+  //document.body.style.background = "src='https://cdn.pixabay.com/photo/2021/09/06/01/13/coffee-6600644_1280.jpg'";
+}
+function hide() {
+  document.getElementById("data").style.display = "none";
+}
+function show() {
+  document.getElementById("data").style.display = "block";
+}
+function ullatus() {
+  var y = document.getElementsByClassName("surprise");
+  for (i=0;i<y.length;i++) {
+    y[i].style.fontSize = "20px";
+  }
+}
 </script>
 
-<h1>Workshop 4: DOM Scripting</h1>
+<h1 id="head">Workshop 4: DOM Scripting</h1>
 <hr />
 <p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use. </p>
 
@@ -36,9 +60,9 @@ img {
 <h2>Exercise 1: Basic  DOM Manipulation</h2>
 <p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons. Use Developer Console to find the </p>
 <p>
-  <button onclick="">Button 1</button>
-  <button onclick="">Button 2</button>
-  <button onclick="">Button 3</button>
+  <button onclick="myClick1()">Button 1</button>
+  <button onclick="myClick2()">Button 2</button>
+  <button onclick="myClick3()">Button 3</button>
 </p>
 
 <ul>
@@ -47,10 +71,11 @@ img {
   will modify the style of the &quot;Exercise 2&quot; heading on this page. JavaScript should change at least the font size, style and color and the background color
   <li>The third button should append the following text paragraph after the <strong>4th paragraph tag &lt;p&gt;</strong> on the page (without overwriting the current content). Change the background of the entire page as well. Note: The Lorem ipsum text should be in italics. It should also add a logo image of some sort after the text.<br>
     <br>
-  <strong id="lorem"><em>&quot;Lorem ipsum</em></strong><em> dolor sit amet, consectetuer   adipiscing elit. Sed posuere interdum sem. Quisque ligula eros   ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam   vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget   velit. &quot;</em></li>
+    <strong id="str"><em>&quot;Lorem ipsum</em></strong><em id="emm"> dolor sit amet, consectetuer   adipiscing elit. Sed posuere interdum sem. Quisque ligula eros   ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam   vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget   velit. &quot;</em>
+  </li>
 </ul>
 
-<h2>Exercise 2: DOM Traversing using ID's and classes</h2>
+<h2 id="head2">Exercise 2: DOM Traversing using ID's and classes</h2>
 <p class="surprise">Add onchange -events to following checkboxes.</p>
 <p>
   <label>
@@ -62,7 +87,7 @@ img {
     Show me</label>
   <br>
   <label>
-    <input type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2"> 
+    <input onchange="ullatus()" type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2"> 
     <span id="surpise">Surprise</span>
   </label>
 </p>
