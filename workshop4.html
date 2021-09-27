@@ -46,9 +46,66 @@ function show() {
 }
 function ullatus() {
   var y = document.getElementsByClassName("surprise");
-  for (i=0;i<y.length;i++) {
+  for (i=0;0<y.length;i++) {
     y[i].style.fontSize = "20px";
   }
+}
+function exercise3() {
+  var x = document.getElementById("mySelect");
+  alert(x.value);
+  var c = document.getElementById('carimage');
+  if (x.value == "BMW") {
+    c.src="https://www.shutterstock.com/image-photo/bucharest-romania-august-1-2020-bmw-1803965659";
+  }
+  if (x.value == "Audi") {
+    c.src="https://image.shutterstock.com/image-illustration/almaty-kazakhstan-march-28-2020-600w-1712944009.jpg";
+  }
+  if (x.value == "Mercedes") {
+    c.src="https://image.shutterstock.com/image-photo/100-stuttgart-germany-6-october-600w-1933028795.jpg";
+  }
+  if (x.value == "Volvo") {
+    c.src="https://image.shutterstock.com/image-photo/minsk-belarus-june-15-2018-600w-1113388016.jpg";
+  }
+}
+function colorB() {
+  document.getElementById('carimage').style.border = "3px solid black";
+}
+function colorC() {
+  document.getElementById('carimage').style ="border: 0px solid black";
+}
+function changePosition() {
+  var x = document.getElementById("carimage");
+  x.style.bottom = "500px";
+  x.style.left = "200px";
+}
+function doMove() {
+  var x = document.getElementById("carimage");
+  x.position = "relative";
+  var oikea = parseInt(x.style.left);
+  x.style.left = (oikea+10+"px"); 
+  console.log("Moved to "+oikea+"px");
+}
+function fadeOut() {
+  var x = document.getElementById('carimage');
+  if (x.style.opacity >= 0) {
+  x.style.opacity -= 0.01;
+  console.log("Näkyvyys on " + x.style.opacity);
+  }
+}
+function disappear() {
+  var x = document.getElementById("carimage");
+  x.parentNode.removeChild(x);
+}
+//Exercise 5
+function insertRows() {
+  var taulu = document.getElementById("data");
+  var rivi = taulu.insertRow(-1);
+  var solu1 = rivi.insertCell(0);
+  var solu2 = rivi.insertCell(1);
+  var solu3 = rivi.insertCell(2);
+  solu1.innerHTML = document.getElementById("textfield").value;
+  solu2.innerHTML = document.getElementById("textfield2").value;
+  solu3.innerHTML = document.getElementById("textfield3").value;
 }
 </script>
 
@@ -102,7 +159,7 @@ function ullatus() {
 <li>When the mouse is moved on top of the image, a colored border should appear surrounding it. On mouse out, border should disappear</li>
 <li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on the pulldown menu below. Find appropriate images from the web.
   <p>Select a new car from the list.</p>
-  <select name="mySelect" id="mySelect" onchange="">
+  <select name="mySelect" id="mySelect" onchange="exercise3()">
     <option value="BMW">BMW         
     <option value="Audi">Audi
     <option value="Mercedes">Mercedes
@@ -110,7 +167,7 @@ function ullatus() {
   </select>
   <br>
   <br>
-<img onmouseover="" onmouseout="" style="left: 0px; opacity: 1;" src="https://www.bmw.in/content/dam/bmw/common/all-models/3-series/sedan/2018/navigation/bmw-3-series-modellfinder.png" width="400" id="carimage"/></li>
+<img onmouseover="colorB()" onmouseout="colorC()" style="left: 0px; opacity: 1;" src="https://www.bmw.in/content/dam/bmw/common/all-models/3-series/sedan/2018/navigation/bmw-3-series-modellfinder.png" width="400" id="carimage"/></li>
 <h2>Exercise 4: Moving things around</h2>
 <ul>
   <li>
@@ -119,7 +176,7 @@ function ullatus() {
       <li><button onclick="changePosition()">Move!</button>Select the div with an id &quot;carimage&quot; and move it 200px left and 500px down</li>
       <li><button onclick="setInterval(function(){doMove();},1000); "/>Animate</button> Write a  funtion doMove() which  will move the image across the screen, or even better: back and forth on  the screen. The Interval required has already been added to the onclick -event of the list item.</li>
       <li><button onclick="setInterval(function(){fadeOut();},250);"/>Fade out!</button> Wite  a function fadeOut() which will slowly decrease the opacity of the image from 1.0 to  0 making it fade out. The Interval required has already been added to the onclick -event of the list item</li>
-      <li><button onclick="hide()"/>Disappear! </button>Finally, write JavaScript which will remove the image from the page</li>
+      <li><button onclick="disappear()"/>Disappear! </button>Finally, write JavaScript which will remove the image from the page</li>
     </ol>
   </li>
 </ul>
@@ -178,7 +235,7 @@ function ullatus() {
   <input type="text" name="textfield2" id="textfield2">
 <br>
 Salary: 
-<input type="text" name="textfield3" id="textfield3">
+<input type="number" name="textfield3" id="textfield3">
 <br>
 <input type="button" onclick="insertRows()" name="Insert" id="Insert" value="Insert">
 </p>
@@ -188,6 +245,17 @@ Salary:
     <p dir="ltr">Write a loop, which goes through all the LI tags in the page and replaces them with a &lt;strong&gt; tagged, red text saying &quot;Replaced&quot;.</p>
   </li>
   <li dir="ltr">How would you replace the contents only on the ones with the word &lsquo;Select&rsquo; in them?</li></ul>
+  <script>
+//extra number 1: li tag
+function liStrong() {
+  var x = document.getElementsByTagName("li");
+  for (i=0; x.length > 0; i++) {
+    x[i].innerHTML = "<strong>Replaced<strong/>";
+    x[i].style.color = "red";
+  }
+}
+//liStrong();
+</script>
 </html>
 
 
