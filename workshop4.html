@@ -29,14 +29,15 @@ function myClick1() {
 function myClick2() {
   var x = document.getElementById("head2");
   x.style.fontFamily = "Tahoma, sans-serif"; 
+  x.style.background = "blue";
 }
 function myClick3() {
   const x = document.querySelectorAll("p");
   const y = x[3];
   const c = document.getElementById("str");
   const v = document.getElementById("emm");
-  y.innerHTML += c.innerHTML+v.innerHTML;
-  //document.body.style.background = "src='https://cdn.pixabay.com/photo/2021/09/06/01/13/coffee-6600644_1280.jpg'";
+  y.innerHTML += c.innerHTML+v.innerHTML + "<img src = 'https://image.shutterstock.com/image-photo/motorcyclist-leather-outfit-black-helmet-600w-1928577935.jpg'>";
+  document.getElementById("keho").style.background="blue";
 }
 function hide() {
   document.getElementById("data").style.display = "none";
@@ -48,6 +49,7 @@ function ullatus() {
   var y = document.getElementsByClassName("surprise");
   for (i=0;0<y.length;i++) {
     y[i].style.fontSize = "20px";
+    y[i].style.background = "blue";
   }
 }
 function exercise3() {
@@ -55,7 +57,7 @@ function exercise3() {
   alert(x.value);
   var c = document.getElementById('carimage');
   if (x.value == "BMW") {
-    c.src="https://www.shutterstock.com/image-photo/bucharest-romania-august-1-2020-bmw-1803965659";
+    c.src="https://image.shutterstock.com/image-illustration/almaty-kazakhstan-february-10-2019-600w-1314657857.jpg";
   }
   if (x.value == "Audi") {
     c.src="https://image.shutterstock.com/image-illustration/almaty-kazakhstan-march-28-2020-600w-1712944009.jpg";
@@ -75,22 +77,21 @@ function colorC() {
 }
 function changePosition() {
   var x = document.getElementById("carimage");
-  x.style.bottom = "500px";
+  x.style.bottom = "-500px";
   x.style.left = "200px";
 }
 function doMove() {
   var x = document.getElementById("carimage");
   x.position = "relative";
-  var oikea = parseInt(x.style.left);
+  var vasen = parseInt(x.style.left);
   x.style.left = (oikea+10+"px"); 
-  console.log("Moved to "+oikea+"px");
+  console.log("Moved to "+vasen+"px");
 }
 function fadeOut() {
   var x = document.getElementById('carimage');
-  if (x.style.opacity >= 0) {
+  var opac = parseInt(x.style.opacity);
   x.style.opacity -= 0.01;
-  console.log("Näkyvyys on " + x.style.opacity);
-  }
+  //console.log("Näkyvyys on " + x.style.opacity);
 }
 function disappear() {
   var x = document.getElementById("carimage");
@@ -108,7 +109,7 @@ function insertRows() {
   solu3.innerHTML = document.getElementById("textfield3").value;
 }
 </script>
-
+<body id="keho">
 <h1 id="head">Workshop 4: DOM Scripting</h1>
 <hr />
 <p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the lecture-material as a reference guide side by side these exercises. It might also be a good idea to save the lines of code you write during the exercises for later use. </p>

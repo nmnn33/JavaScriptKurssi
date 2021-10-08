@@ -28,7 +28,8 @@ function myFunction1() {
   alert("Kiitos että clickasit minua! tässä päivä, kuukausi ja tunnit: "+currdate);
 }
 function showTable() {
-  var html = `<table id="example" class="display" cellspacing="0" width="100%" border="5px solid gray">
+  var html = `
+    <table id="example" class="display" cellspacing="0" width="100%" border="5px solid gray">
         <thead>
             <tr>
                 <th>Name</th>
@@ -80,7 +81,7 @@ function showTable1() {
   document.write('<tr>');
   for(var i=0; i<persons.length; i++) {
     if (i % 3 == 0) {
-      document.write('<tr></tr>');
+      document.write('</tr><tr>');
     }
     document.write("<td>"+persons[i]+"</td>");
   }
@@ -120,7 +121,7 @@ function showPosition(position) {
   "<br>Longitude: " + position.coords.longitude;
 }
 </script>
-
+<body>
 <h1>Workshop 3: JavaScript Events</h1>
 <hr />
 <p>In this exercise we will practice the use of BOM and the JavaScript events. Use the lecture-material as a reference guide side by side these exercises. It might also be a 
@@ -257,8 +258,8 @@ The second button should show your location on a Google Maps. You can see the ma
 "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false" where latlon is your latitude + longitute data separated by 
 comma (,).
 </li>
-
 <script>
+  //ei toimi
   function gMap(position) {
     var latlon = position.coords.latitude + "," + position.coords.longitude;
   
