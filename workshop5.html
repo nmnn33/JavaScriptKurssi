@@ -16,10 +16,8 @@ table, tr, td{
 }
 
 </style>
-<script src="myscripts.js">
-<!-- Exercise #1 A -->
-
-</script>
+<body>
+<script src="workshop5.js"></script>
 
 <!-- This is for assignment 3 -->
 <script src="shopping.js"></script>
@@ -52,11 +50,13 @@ PowerPoint -slides.</p>
 <form onsubmit="return getData()">
 
 	Email address:<br>
-  <input type="text" name="email">
+  <input type="text" id="tekstiAlue" name="email">
+  <p id="error1"></p>
   <br>
 	Comment:<br>
-  <textarea name="comment"></textarea>
-	<br>
+  <textarea name="comment" id="kommenttiKenttä"></textarea>
+	<p id="error2"></p>
+  <br>
 <input type="submit" value="Send">
 </form>
 </p>
