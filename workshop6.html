@@ -19,13 +19,34 @@ table, tr, td{
 
 <script>
 
+var check = document.querySelectorAll("input[name='CheckboxGroup1']");
 
+function loodo() {
+  var eka = document.getElementById("sessiondata");
+  var x = localStorage.getItem(check.value);
+  eka.innerHTML =check + x;
 }
-
+//paska ei toimi tossa Services arvon saamiseen
+function getData() {
+  var des = document.getElementById("destination").value;
+  var arr = document.getElementById("arrival").value;
+  var x = 0;
+  for (var i=0; i < check.length; i++) {
+      if (check[i].checked == true) {
+        check[i].value = x;
+        console.log(x);
+      }
+  }
+  localStorage.setItem(x, [des , arr]);
+  sessionStorage.setItem(x, [des , arr]);
+  var y = sessionStorage.getItem(x);
+  var toka = document.getElementById("sus");
+  toka.innerHTML =  y;
+}
 </script>
 <!-- exercise #2 -->
 
-<body onload="">
+<body onload="loodo()">
 
 <h1>Workshop 6: Using Localstorage</h1>
 <hr />
@@ -89,6 +110,7 @@ event on the body tag.</p>
 should be used. Copy the form above here and implement sessionstorage for it. See what 
 happens, when you close the browser. You can utilize developer tools to study the data (F12, 
 select Application tab, then LocalStorage on the left).</p>
+<div id="sus">Session data goes here!</div>
 <h2>Exercise 4:</h2>
 <p>Try to add localstorage features to your project work. This means, that todo-list for 
 example, would remember the data that you have entered between browser refresh and even 
