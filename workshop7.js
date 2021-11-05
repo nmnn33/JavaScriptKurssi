@@ -2,8 +2,6 @@ window.onload = function () {
     document.getElementById("Fetch").addEventListener('click', parseData);
     document.getElementById("Fetch2").addEventListener('click', loadXMLDoc);
     document.getElementById("Fetch3").addEventListener('click', tabletis);
-    document.getElementById("Fetch4").addEventListener('click', rss('https://pastebin.com/raw/tPmhjEPM'));
-    document.getElementById("Fetch5").addEventListener('click', rss('http://www.iltalehti.fi/rss/uutiset.xml'));
 }
 function parseData() {
     var quote = document.getElementsByTagName("quote");
@@ -39,6 +37,8 @@ function tabletis() {
             var xmlDoc = xmlhttp.responseXML;
             //testiä varten
             console.log(xmlDoc);
+            var quote = xmlDoc.getElementsByTagName("quote");
+            var author = xmlDoc.getElementsByTagName("author");
             for (i = 0; i < quote.length; i++) {
                 data[0].innerHTML = quote[i].childNodes[0].nodeValue;
                 data[1].innerHTML = author[i].childNodes[0].nodeValue;
@@ -49,8 +49,7 @@ function tabletis() {
 function rss(url) {
     // Create AJAX object and other variables
     var xmlhttp = new XMLHttpRequest();
-    var item, link, txt, i;
-    txt = '<ul>';
+    var i;
     // Specify the data / url to be fetched
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
@@ -59,12 +58,22 @@ function rss(url) {
             var xmlDoc = xmlhttp.responseXML;
             //testiä varten
             console.log(xmlDoc);
-            item = document.getElementsByTagName("item").childNodes[0].nodeValue;
-            link = document.getElementsByTagName("link").childNodes[0].nodeValue;
-            for (i=0; i < item.length; i++) {
-                txt += '<li>' + item[i] + "  " + '<a href="' + link[i] + '"></a>' + '</li>'
-            } txt += '</ul>'
-            document.getElementsById("newsfeed").innerHTML = txt;
+            console.log(url);
+            var item, feedlink, name, description, content = '';
+            var items = xmlDoc.getElementsByTagName("item");
+
+            for (i = 0; i < items.length; i++) {
+
+                feedlink = items[i].getElementsByTagName('link').item(0).firstChild.nodeValue;
+                name = items[i].getElementsByTagName('title').item(0).firstChild.nodeValue;
+                item = '<li><a href="' + feedlink + '">' + name + '</a></li>';
+                content += item;
+
+            }
+
+            // Finally we place the contents in a div
+            document.getElementById("newsfeed").innerHTML = "<ul>" + content + "</ul>";
         }
+
     }
 }
