@@ -399,6 +399,7 @@
           var parsed = JSON.parse(xmlhttp.responseText);
           console.log(parsed);
           var txt, i;
+          txt = "";
           for (i = 0; i < parsed.length; i++) {
             txt += '<tr>'
               + '<td>' + parsed[i].name.first + '</td>'
@@ -407,7 +408,7 @@
               + '<td>' + '<img src=' + parsed[i].picture + '>' + '</td>'
               + '</tr>';
           }
-          document.getElementById("rawdata").innerHTML = '<table style id="taulu">' + txt + '</table>';
+          document.getElementById("rawdata").innerHTML = '<table id="taulu">' + txt + '</table>';
           document.getElementById("taulu").style.border = "2px solid purple";
         }
       }
@@ -529,6 +530,7 @@ var text = '{ "employees" : [' +
           var parsed = JSON.parse(x);
           console.log(parsed);
           var txt, i;
+          txt = "";
           txt = '<tr><td>City</td><td>Temp (Kelvin)</td><td>Clouds</td><td>Wind spd</td></tr>';
           for (i = 0; i < parsed.length; i++) {
             txt += '<tr>'
@@ -555,7 +557,8 @@ var text = '{ "employees" : [' +
           var parsed = JSON.parse(x);
           console.log(parsed);
           var txt, i;
-          // txt = '<tr><td>City</td><td>Temp (Kelvin)</td><td>Clouds</td><td>Wind spd</td></tr>';
+          txt = "";
+          txt = '<tr><td>City</td><td>Temp (Kelvin)</td><td>Clouds</td><td>Wind spd</td></tr>';
           txt += '<tr>'
             + '<td>' + "iron" + '</td>'
             + '<td>' + "iron" + '</td>'
