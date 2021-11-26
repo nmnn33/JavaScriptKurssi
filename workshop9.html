@@ -133,6 +133,13 @@ See <a href="http://code.jquery.com">code.jquery.com</a> for latest version.
         {
           duration: 600
         });
+      $("h1").animate({
+        opacity: 1,
+        height: ""
+      },
+        {
+          duration: 600
+        });
     });
 
     //load XML to div
@@ -156,34 +163,34 @@ See <a href="http://code.jquery.com">code.jquery.com</a> for latest version.
           alert("An error occurred while processing XML file");
           console.log("XML reading Failed: ", e);
         },
-      
+
         success: function (response) {
-          if(select == "titles") {
-          $(response).find("item").each(function () {
-            var title = $(this).find('title').text();
-            console.log(title);
-            txt += "<li>" + title + "</li>";
-          });
-          document.getElementById("ajax").innerHTML +=  txt + "</ul>";
-        }
+          if (select == "titles") {
+            $(response).find("item").each(function () {
+              var title = $(this).find('title').text();
+              console.log(title);
+              txt += "<li>" + title + "</li>";
+            });
+            document.getElementById("ajax").innerHTML += txt + "</ul>";
+          }
 
-        if(select == "links") {
-          $(response).find("item").each(function () {
-            var link = $(this).find('link').text();
-            console.log(link);
-            txt += "<li>" + link + "</li>";
-          });
-          document.getElementById("ajax").innerHTML +=  txt + "</ul>";;
-        }
+          if (select == "links") {
+            $(response).find("item").each(function () {
+              var link = $(this).find('link').text();
+              console.log(link);
+              txt += "<li>" + link + "</li>";
+            });
+            document.getElementById("ajax").innerHTML += txt + "</ul>";;
+          }
 
-        if(select == "descriptions") {
-          $(response).find("item").each(function () {
-            var description = $(this).find('description').text();
-            console.log(description);
-            txt += "<li>" + description + "</li>";
-          });
-          document.getElementById("ajax").innerHTML += txt + "</ul>";
-        }
+          if (select == "descriptions") {
+            $(response).find("item").each(function () {
+              var description = $(this).find('description').text();
+              console.log(description);
+              txt += "<li>" + description + "</li>";
+            });
+            document.getElementById("ajax").innerHTML += txt + "</ul>";
+          }
         }
       });
     }
